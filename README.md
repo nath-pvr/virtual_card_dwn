@@ -37,6 +37,21 @@ virtual_card_dwn/
 2. Lancer un serveur local (ou via votre environnement WAMP).
 3. Ouvrir `index.html` dans le navigateur.
 
+## Publication en page cachee (`/vcard`)
+
+Le projet est prepare pour etre servi via :
+- `https://www.digitalwithnath.fr/vcard`
+
+Elements deja configures :
+- `index.html` contient `base href="/vcard/"` pour stabiliser les chemins d'assets.
+- balises meta `robots` en `noindex, nofollow`.
+- `.htaccess` ajoute un header `X-Robots-Tag` et desactive le listing de dossier.
+
+Deploiement recommande :
+1. Copier ce projet dans le dossier web `vcard` de votre site principal.
+2. Verifier que l'URL `https://www.digitalwithnath.fr/vcard/` charge bien la page.
+3. Verifier que `https://www.digitalwithnath.fr/vcard` redirige vers la version avec slash (comportement Apache standard).
+
 ## Fonctionnalites principales
 
 - Theme visuel neon + fond cosmique
@@ -44,4 +59,3 @@ virtual_card_dwn/
 - Affichage des coordonnees (ville, email, telephone)
 - Boutons CTA personnalises
 - Copie du lien courant via le bouton `Copier mon lien`
-
