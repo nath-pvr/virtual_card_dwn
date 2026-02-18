@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Carte de visite</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="card" aria-label="Carte de visite virtuelle">
+      <header class="profile">
+        <div class="logo-shell premium">
+          <img
+            class="logo-source"
+            src="./asset/img/logo_refonte_DWN.svg"
+            alt="Logo DigitalWithNath"
+          />
+        </div>
+        <p class="brand">DigitalWithNath</p>
+        <h1 class="name">Nathalie Pouvrasseau</h1>
+        <p class="tagline">ASSISTANTE DIGITALE &bull; <br> DEVELOPPEUSE WEB</p>
+      </header>
+
+      <section class="info-panel" aria-label="Informations">
+        <a
+          class="info-row"
+          href="https://maps.google.com/?q=Belfort%2C%20France"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <span class="icon" aria-hidden="true"><img class="lavander" src="./asset/img/icons/pin.svg" alt=""></span>
+          <span>Belfort, France</span>
+        </a>
+        <a class="info-row" href="mailto:npouvrasseau@gmail.com">
+          <span class="icon" aria-hidden="true"><img src="./asset/img/icons/mail.svg" alt=""></span>
+          <span>npouvrasseau@gmail.com</span>
+        </a>
+        <a class="info-row" href="tel:+33659868210">
+          <span class="icon" aria-hidden="true"><img src="./asset/img/icons/icons8-phone.svg" alt=""></span>
+          <span>+33 6 59 86 82 10</span>
+        </a>
+      </section>
+
+      <section class="actions" aria-label="Actions de contact">
+        <a class="btn primary" href="#">Decouvrir mes services</a>
+        <a class="btn secondary" href="mailto:npouvrasseau@gmail.com">Parler de mon projet</a>
+        <button class="chip-btn" type="button" id="copy-link">Copier mon lien</button>
+      </section>
+
+      <ul class="pill-list" aria-label="Piliers">
+        <li>Strategie</li>
+        <li>Creation</li>
+        <li>Impact</li>
+      </ul>
+
+      <nav class="social" aria-label="Reseaux sociaux">
+        <a href="#" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn"><img src="./asset/img/icons/icons8-linkedin-50.svg" alt=""></a>
+        <a href="mailto:npouvrasseau@gmail.com" aria-label="Email"><img src="./asset/img/icons/mail.svg" alt=""></a>
+        <a href="#" target="_blank" rel="noreferrer noopener" aria-label="Instagram"><img src="./asset/img/icons/icons8-instagram-50.svg" alt=""></a>
+        <a href="#" target="_blank" rel="noreferrer noopener" aria-label="Facebook"><img src="./asset/img/icons/icons8-facebook-50.svg" alt=""></a>
+      </nav>
+    </main>
+
+    <p id="toast" class="toast" role="status" aria-live="polite"></p>
+    <script src="./script.js"></script>
+  </body>
+</html>

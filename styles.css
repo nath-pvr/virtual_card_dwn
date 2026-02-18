@@ -1,0 +1,430 @@
+:root {
+  /* Color system */
+  --bg-main: #070a1a;
+  --bg-secondary: #0b1026;
+  --surface: #11183a;
+  --text-main: #eaeaf0;
+  --text-secondary: #b8bdd9;
+  --text-muted: #8b90b2;
+  --accent-primary: #5e5ff0;
+  --accent-primary-hover: #7b7cff;
+  --accent-secondary: #8b5cf6;
+  --accent-secondary-soft: #a78bfa;
+  --highlight-rare: #eb9eff;
+  --ring-focus: rgba(167, 139, 250, 0.35);
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --shadow-soft: 0 20px 50px rgba(2, 6, 23, 0.45);
+  /* Layout system */
+  --layout-max: 1200px;
+  --layout-inline: clamp(1rem, 2.2vw, 1.8rem);
+  --section-space: clamp(3rem, 4vw, 4rem);
+  --nav-safe: 5.3rem;
+  /* Typography scale */
+  --type-base: clamp(0.94rem, 0.9rem + 0.2vw, 1rem);
+  --type-base-lg: clamp(0.96rem, 0.92rem + 0.26vw, 1.04rem);
+  --type-hero: clamp(2.05rem, 5.6vw, 4.2rem);
+  --type-hero-sub: clamp(1rem, 1.2vw, 1.28rem);
+  --type-hero-kicker: clamp(0.86rem, 0.82rem + 0.34vw, 0.96rem);
+  --type-title-xl: clamp(1.5rem, 2.2vw, 2.05rem);
+  --type-title-lg: clamp(1.3rem, 1.75vw, 1.7rem);
+  --type-section-h2: clamp(1.5rem, 2.2vw, 2.05rem);
+  --type-section-h3: clamp(1.3rem, 1.75vw, 1.7rem);
+  --type-price: clamp(1.55rem, 1.95vw, 2.1rem);
+  /* Radius system */
+  --radius-site: 1rem;
+  --radius-button: 10px;
+
+ 
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: clamp(10px, 2vw, 24px);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: var(--text-main);
+  background-image: url(./asset/img/bg_img_vcard.png);
+  background-position: bottom;
+  overflow-x: hidden;
+}
+
+
+.card {
+  position: relative;
+  width: min(100%, 480px);
+  min-height: min(920px, calc(100vh - 20px));
+  border-radius: 34px;
+  padding: clamp(1.15rem, 2.8vw, 1.9rem);
+  border: 1px solid rgba(179, 149, 255, 0.75);
+  background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.08),
+                rgba(255, 255, 255, 0.02)
+              );
+              
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.37);
+}
+
+.card::before,
+.card::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.card::before {
+  inset: -1px;
+  border: 1px solid rgba(150, 112, 255, 0.75);
+  box-shadow: 0 0 24px rgba(119, 85, 255, 0.52);
+}
+
+.card::after {
+  inset: 42% 20% auto;
+  height: 120px;
+  background: radial-gradient(ellipse at center, rgba(201, 152, 255, 0.28), transparent 72%);
+  filter: blur(16px);
+}
+
+.profile {
+  position: relative;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.logo-shell {
+  position: relative;
+  width: 148px;
+  height: 148px;
+  margin: 0 auto 14px;
+}
+
+.logo-shell .logo-source[src='./asset/img/logo_refonte_DWN.svg'] {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  visibility: hidden;
+}
+
+/* ✅ Glow + profondeur + "sparkle" via couches de dégradés */
+.logo-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  /* 1) halo central lumineux (radial)
+     2) petite brillance secondaire
+     3) ton gradient principal */
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(224, 195, 255, 0.35) 14%,
+      rgba(199, 125, 255, 0.25) 28%,
+      rgba(123, 92, 255, 0.18) 42%,
+      transparent 62%
+    ),
+    radial-gradient(circle at 65% 30%, rgba(255, 255, 255, 0.22) 0%, transparent 45%),
+    linear-gradient(135deg, #c77dff 0%, #b799ff 35%, #7b5cff 65%, #5a3fff 100%);
+
+  /* Important pour donner l'effet "lumineux" */
+  background-blend-mode: screen, screen, normal;
+
+  -webkit-mask-image: url('./asset/img/logo_refonte_DWN.svg');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-image: url('./asset/img/logo_refonte_DWN.svg');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+
+  /* Glow plus punchy (comme photo 2) */
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.55))
+    drop-shadow(0 0 14px rgba(199, 125, 255, 0.85)) drop-shadow(0 0 28px rgba(123, 92, 255, 0.75))
+    drop-shadow(0 0 52px rgba(74, 47, 255, 0.55));
+}
+
+/* ✅ Variante premium avec ton gradient + halo */
+.logo-shell.premium::before {
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(255, 255, 255, 0.6) 0%,
+      rgba(224, 195, 255, 0.35) 14%,
+      rgba(199, 125, 255, 0.28) 28%,
+      rgba(123, 92, 255, 0.18) 42%,
+      transparent 62%
+    ),
+    radial-gradient(circle at 65% 30%, rgba(255, 255, 255, 0.22) 0%, transparent 45%),
+    linear-gradient(135deg, #e0c3ff 0%, #c77dff 25%, #9d6bff 50%, #7b5cff 75%, #4a2fff 100%);
+
+  background-blend-mode: screen, screen, normal;
+}
+
+/* Fallback si mask pas supporté */
+@supports not ((-webkit-mask-image: url('')) or (mask-image: url(''))) {
+  .logo-shell .logo-source[src='./asset/img/logo_refonte_DWN.svg'] {
+    visibility: visible;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.55))
+      drop-shadow(0 0 14px rgba(199, 125, 255, 0.85)) drop-shadow(0 0 28px rgba(123, 92, 255, 0.75))
+      drop-shadow(0 0 52px rgba(74, 47, 255, 0.55));
+  }
+
+  .logo-shell::before {
+    content: none;
+  }
+}
+
+.brand {
+  margin: 0;
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+  font-size: clamp(2rem, 5.6vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 16px rgba(191, 157, 255, 0.36);
+}
+
+.brand::after {
+  content: '';
+  display: block;
+  margin: 12px auto 0;
+  width: min(62%, 520px);
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--accent-secondary-soft) 0%,
+    var(--accent-primary) 55%,
+    var(--highlight-rare) 100%
+  );
+  box-shadow: 0 0 20px rgba(167, 139, 250, 0.65);
+}
+
+.name {
+  margin: 12px 0 0;
+  font-size: clamp(1.8rem, 4.8vw, 2.4rem);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.tagline {
+  margin: 8px 0 0;
+  color: #c4b8ff;
+  font-size: clamp(0.86rem, 2.5vw, 1.05rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.info-panel {
+  margin-top: 20px;
+  border-radius: 24px;
+  border: 1px solid rgba(140, 107, 255, 0.62);
+  background:
+    radial-gradient(120% 90% at 55% 18%, rgba(194, 158, 255, 0.24), transparent 65%),
+    linear-gradient(180deg, rgba(31, 28, 95, 0.55), rgba(19, 15, 73, 0.5));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 24px rgba(108, 74, 255, 0.3);
+  overflow: hidden;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: clamp(1.05rem, 3.4vw, 1.25rem);
+  transition: background 0.2s ease;
+}
+
+.info-row + .info-row {
+  border-top: 1px solid rgba(200, 177, 255, 0.23);
+}
+
+.info-row:hover {
+  background: rgba(153, 114, 255, 0.12);
+}
+
+.icon {
+  width: 35px;
+}
+
+.icon img {
+  max-width: 35px;
+}
+
+.lavander {
+  color: #c8bfe7;
+}
+
+.actions {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 62px;
+  border-radius: 999px;
+  border: 1px solid rgba(182, 156, 255, 0.5);
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: clamp(1.08rem, 3.8vw, 1.38rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn.primary {
+  border-color: rgba(195, 167, 255, 0.7);
+  background: linear-gradient(90deg, #644cff 0%, #945cff 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 0 22px rgba(145, 102, 255, 0.5);
+}
+
+.btn.primary:hover {
+  background: linear-gradient(90deg, #745fff 0%, #a16cff 100%);
+}
+
+.btn.secondary {
+  background: linear-gradient(180deg, rgba(26, 27, 96, 0.86), rgba(21, 21, 79, 0.86));
+  box-shadow: inset 0 0 20px rgba(95, 87, 204, 0.2);
+}
+
+.chip-btn {
+  justify-self: center;
+  border: 1px solid rgba(153, 122, 255, 0.5);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font: inherit;
+  font-size: 0.92rem;
+  color: #d2c5ff;
+  background: rgba(31, 27, 97, 0.6);
+  cursor: pointer;
+}
+
+.pill-list {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill-list li {
+  border: 1px solid rgba(156, 122, 255, 0.55);
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-size: 0.86rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #cfc2ff;
+  background: rgba(24, 19, 88, 0.62);
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.social a {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #e8e0ff;
+  border: 1px solid rgba(186, 153, 255, 0.8);
+  background:
+    radial-gradient(circle at 30% 25%, rgba(174, 146, 255, 0.28), transparent 48%),
+    linear-gradient(160deg, rgba(58, 49, 155, 0.8), rgba(25, 22, 92, 0.8));
+  box-shadow:
+    inset 0 0 14px rgba(214, 173, 255, 0.2),
+    0 0 18px rgba(123, 92, 255, 0.4);
+}
+
+.social a:hover {
+  transform: translateY(-2px);
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%) translateY(20px);
+  margin: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(156, 122, 255, 0.62);
+  background: rgba(19, 13, 71, 0.9);
+  color: #f0e9ff;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s ease;
+  backdrop-filter: blur(6px);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 420px) {
+  .card {
+    min-height: calc(100vh - 12px);
+    border-radius: 26px;
+  }
+
+  .logo-shell {
+    width: 132px;
+    height: 132px;
+  }
+
+  .social a {
+    width: 58px;
+    height: 58px;
+    font-size: 1.8rem;
+  }
+}
