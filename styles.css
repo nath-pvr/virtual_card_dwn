@@ -53,7 +53,7 @@ body {
   font-family: 'Inter', 'Segoe UI', sans-serif;
   color: var(--text-main);
   background-image: url(./asset/img/bg_img_vcard.png);
-  background-position: bottom;
+  background-position: top;
   overflow-x: hidden;
 }
 
@@ -64,13 +64,13 @@ body {
   border-radius: 34px;
   padding: clamp(1.15rem, 2.8vw, 1.9rem);
   border: 1px solid rgba(179, 149, 255, 0.75);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-  backdrop-filter: blur(20px) saturate(140%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.008));
+  backdrop-filter: blur(2px) saturate(90%);
   -webkit-backdrop-filter: blur(20px) saturate(140%);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
 }
 
-.card::before,
+/* .card::before,
 .card::after {
   content: '';
   position: absolute;
@@ -89,7 +89,7 @@ body {
   height: 120px;
   background: radial-gradient(ellipse at center, rgba(201, 152, 255, 0.28), transparent 72%);
   filter: blur(16px);
-}
+} */
 
 .profile {
   position: relative;
@@ -186,8 +186,8 @@ body {
 .brand {
   margin: 0;
   font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
-  font-size: clamp(2rem, 5.6vw, 3.5rem);
-  font-weight: 800;
+  font-size: clamp(3rem, 5.6vw, 3.5rem);
+  font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.02em;
   text-shadow: 0 0 16px rgba(191, 157, 255, 0.36);
@@ -197,7 +197,7 @@ body {
   content: '';
   display: block;
   margin: 12px auto 0;
-  width: min(62%, 520px);
+  width: min(75%, 520px);
   height: 4px;
   border-radius: 999px;
   background: linear-gradient(
@@ -211,7 +211,7 @@ body {
 
 .name {
   margin: 12px 0 0;
-  font-size: clamp(1.8rem, 4.8vw, 2.4rem);
+  font-size: clamp(1.4rem, 4.8vw, 2.4rem);
   line-height: 1.15;
   font-weight: 700;
 }
